@@ -1,0 +1,187 @@
+.block{
+    width: 100%;
+    height: 100%;
+
+    opacity: 1;
+    transition: none;
+}
+
+.block_main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10vh 3vw 0px 3vw;
+}
+
+.block_main .main_gallery{
+    /* border: 1px solid black; */
+
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.block_main .main_gallery .main_gallery-title{
+    font-family: 'Nunito';
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 114.286% */
+    letter-spacing: 3px;
+    color: #000000;
+    opacity: 1;
+
+    padding: 30px 24px;
+}
+
+/* .block_main .main_gallery .main_gallery-body{
+    
+
+    
+
+    
+
+} */
+
+
+
+
+
+.block_main .main_content{
+    width: 60%;
+    height: 100%;
+
+
+    /* border: 1px solid black; */
+}
+
+
+
+
+
+
+.main_gallery-body {
+    background-color: #e8d9c2ba;
+    box-shadow: 0px 0px 8px #b5e8a44e;
+
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+
+    position: relative;
+
+    border-top-left-radius: 68px;
+    border-top-right-radius: 68px;
+
+    width: 85%;
+    height: 85%;
+  }
+  
+  .gallery-item {
+    width: 0;
+    height: 80%;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    opacity: 0;
+    transform: translateX(-20px);
+
+    /* border: 1px solid black; */
+  }
+  
+  .gallery-item.active {
+    /* opacity: 1;
+    width: 100% !important;
+    transform: translateX(80px); */
+
+    animation-name: showGalaryItem;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+
+    /* opacity: .4 !important; */
+
+    background-image: url('../../assets/bioPhotos/bio_photo_1.png');
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+  }
+
+  .gallery-item:nth-of-type(2n).active{
+    background-image: url('../../assets/bioPhotos/bio_photo_2.png');
+    background-size: 124%;
+    background-position: 80% center;
+  }
+
+  @keyframes showGalaryItem {
+    0%{
+      -moz-transform: translateX(-20px) scale(-1, 1);
+      -webkit-transform: translateX(-20px) scale(-1, 1);
+      -o-transform: translateX(-20px) scale(-1, 1);
+      -ms-transform: translateX(-20px) scale(-1, 1);
+      transform: translateX(-20px) scale(-1, 1);
+
+      width: 0;
+      opacity: 0;
+    }
+
+    10%{
+      width: 150%;
+      -moz-transform: translateX(60px) scale(-1, 1);
+      -webkit-transform: translateX(60px) scale(-1, 1);
+      -o-transform: translateX(60px) scale(-1, 1);
+      -ms-transform: translateX(60px) scale(-1, 1);
+      transform: translateX(60px) scale(-1, 1);
+    }
+
+    70%{
+
+      opacity: 1;
+    }
+
+    100%{
+      width: 100%;
+      -moz-transform: translateX(90px) scale(-1, 1);
+      -webkit-transform: translateX(90px) scale(-1, 1);
+      -o-transform: translateX(90px) scale(-1, 1);
+      -ms-transform: translateX(90px) scale(-1, 1);
+      transform: translateX(90px) scale(-1, 1);
+      opacity: 1;
+    }
+  }
+  
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    position: absolute;
+    bottom: 10vw;
+    left: 0;
+
+    width: 100%;
+  }
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    background-color: #ffffff00;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    border: 2px solid #3c631ff4;
+  }
+  
+  .dot.active {
+    background-color: #a4cd859b; /* Цвет активной точки */
+  }
+  
