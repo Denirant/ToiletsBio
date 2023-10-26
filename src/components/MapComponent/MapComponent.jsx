@@ -47,25 +47,35 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { YMaps, Map, Placemark, FullscreenControl, GeolocationControl, ZoomControl } from 'react-yandex-maps';
 
-function MapComponent({ selectedAddress, handleMapClick }) {
+function MapComponent({ selectedAddress, handleMapClick, width, height }) {
 
     const [mapCenter, setMapCenter] = useState([59.939095, 30.315868]);
 
     useEffect(() => {
         // Проверяем, есть ли выбранный адрес, и обновляем центр карты
         if (selectedAddress) {
+          console.log(selectedAddress)
             // const [lat, lon] = selectedAddress.split(',').map(parseFloat);
             setMapCenter(selectedAddress);
         }
     }, [selectedAddress]); 
     
+    const style = {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '100%'
+    };
+  
 
   return (
     <YMaps >
-      <div className='map_container'>
+      <div className='map_container' style={{width:'100%', height:'100%', position:'relative'}}>
         <Map
-          width="766px"
-          height="600px"
+          // width="100%"
+          // height="100%"   
+          style={style}  
           state={{
             center: mapCenter,
             zoom: 10,
@@ -74,10 +84,7 @@ function MapComponent({ selectedAddress, handleMapClick }) {
           onClick={handleMapClick}
         >
             <FullscreenControl />
-            <GeolocationControl 
-                options={{ float: "left" }}               
-            />
-            <ZoomControl />
+            <ZoomControl options={{size: "small", position: {top: 10, left: 10}}}/>
           {selectedAddress && (
             <Placemark geometry={selectedAddress} />
           )}
