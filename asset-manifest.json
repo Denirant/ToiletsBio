@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ToiletsBio/static/css/main.dfec7aea.css",
+    "main.css": "/ToiletsBio/static/css/main.64a4557f.css",
     "main.js": "/ToiletsBio/static/js/main.19346eaa.js",
     "static/media/toiletMain.png": "/ToiletsBio/static/media/toiletMain.9be458672cb07b187390.png",
     "static/media/avito.png": "/ToiletsBio/static/media/avito.0565a538200c6666ccd4.png",
     "index.html": "/ToiletsBio/index.html",
-    "main.dfec7aea.css.map": "/ToiletsBio/static/css/main.dfec7aea.css.map",
+    "main.64a4557f.css.map": "/ToiletsBio/static/css/main.64a4557f.css.map",
     "main.19346eaa.js.map": "/ToiletsBio/static/js/main.19346eaa.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfec7aea.css",
+    "static/css/main.64a4557f.css",
     "static/js/main.19346eaa.js"
   ]
 }
