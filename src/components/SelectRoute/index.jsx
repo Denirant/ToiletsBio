@@ -391,13 +391,13 @@ function AddressAutocomplete({ outerdata = null }) {
 
   async function sendEmail(data) {
     const params = {
-      sender: prevData.email,
-      to: "kwabshid@gmail.com",
+      sender: 'BioSPB.ru',
+      to: "biospbrf@mail.ru",
       subject: "Заказ на сайте",
-      replyto: prevData.email,
+      replyto: 'BioSPB.ru',
       message: `Имя: ${prevData.name}\n 
       Адрес: ${prevData.address}\n
-      Email: ${prevData.email}\n
+      Email: ${prevData.email || 'Не указана'}\n
       Количество кабинок: ${prevData.amount}\n
       Цена: ${prevData.price * prevData.amount}\n
       Телефон: ${prevData.phone}\n`,
@@ -502,6 +502,14 @@ function AddressAutocomplete({ outerdata = null }) {
               selectedAddress={selectedAddress}
               handleMapClick={handleMapClick}
             />
+            <button
+              onClick={handleCheckOrder}
+              className={`${
+                !(name && value && address && phoneNumber) ? "inactive" : ""
+              }`}
+            >
+              Оформить
+            </button>
           </div>
         )}
         {prevData && price && !isOrderComplete && (
@@ -528,7 +536,7 @@ function AddressAutocomplete({ outerdata = null }) {
               </li>
               <li className="result_datalist--item">
                 <p className="result_datalist--title">Почта:</p>
-                <p className="result_datalist--value">{prevData.email}</p>
+                <p className="result_datalist--value">{prevData.email || 'Не указана'}</p>
               </li>
               <li className="result_datalist--item">
                 <p className="result_datalist--title">Количество:</p>

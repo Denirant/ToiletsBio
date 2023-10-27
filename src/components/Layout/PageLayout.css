@@ -46,8 +46,10 @@
     bottom: 0;
     right: 10px;
     z-index: 2;
-    gap: 12px;
+    /* gap: 12px; */
   }
+
+  .points-container>*+* { margin-left: 12px;}
   
   .point {
     width: 6px;
@@ -101,11 +103,12 @@
 .menu{
     display: flex;
     flex-direction: row;
-    gap: 18px;
+    /* gap: 18px; */
 
     align-items: center;
 }
 
+.menu>*+* { margin-left: 18px;}
 
 .menu-item{
     font-family: 'Nunito';
@@ -163,6 +166,8 @@
     gap: 12px;
     align-items: center;
 }
+
+/* .page-header .logo>*+* { margin-left: 8rem;} */
 
 .page-header .logo .logo-image{
     width: 44px;

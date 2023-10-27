@@ -29,7 +29,7 @@ import emailIcon from "./assets/email.png";
 
 import emailjs from "@emailjs/browser";
 
-import avitoIcon from './assets/avito.png'
+import avitoIcon from "./assets/avito.png";
 
 function App() {
   const [currentElem, setCurrentElem] = useState(0);
@@ -43,10 +43,10 @@ function App() {
   async function onPhoneSend(e) {
     if (document.querySelector("#phoneInput").value) {
       const params = {
-        sender: "WebSite@mail.ru",
-        to: "kwabshid@gmail.com",
+        sender: "BioSPB.ru",
+        to: "biospbrf@mail.ru",
         subject: "Заявка на обратную связь",
-        replyto: "WebSite@mail.ru",
+        replyto: "BioSPB.ru",
         message: `Оставлена заявка на сайте, перезвоните по телефону: ${
           document.querySelector("#phoneInput").value
         }`,
@@ -66,7 +66,7 @@ function App() {
   }
 
   function handleSelectItem(e) {
-    const menuItems = Array.from(document.querySelectorAll(".menu_item a"));
+    const menuItems = Array.from(document.querySelectorAll(".nav_topdown .menu_item a"));
 
     menuItems.forEach((value, index, array) => {
       console.log(value);
@@ -74,6 +74,8 @@ function App() {
       if (value === e.target) {
         setCurrentElem(index);
       }
+
+      setIsMenuOpen(false);
     });
   }
 
@@ -433,9 +435,11 @@ function App() {
     setOrderData(shortData);
   }
 
-  function handleLogoClick(e){
-    window.location = "/"
+  function handleLogoClick(e) {
+    window.location = "/";
   }
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="App" id="home">
@@ -443,10 +447,15 @@ function App() {
         <div className="nav_container">
           <nav className="nav_content">
             <div className="logo" onClick={handleLogoClick}>
-              <img src={logo} alt="logo icon"/>
-              <p>
-                <span>Био</span>СПБ.рф
-              </p>
+              <div className="logo_content">
+                <img src={logo} alt="logo icon" />
+                <p>
+                  <span>Био</span>СПБ.рф
+                </p>
+              </div>
+              <a className="nav_tel__link" href="tel:+79111169173">
+                925-28-31
+              </a>
             </div>
             <ul className="menu">
               <li
@@ -482,22 +491,62 @@ function App() {
             </ul>
             <p className="nav_tel">
               <a className="nav_tel__link" href="tel:+79111169173">
-                +7 (911) 116-91-73
+                +7 911 925-28-31
               </a>
             </p>
+            <div
+              className={`nav_burger ${isMenuOpen ? "active" : ""}`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            ></div>
+            <div className={`nav_topdown ${isMenuOpen ? "active" : ""}`}>
+              <ul className="menu">
+                <li
+                  onClick={handleSelectItem}
+                  className={`menu_item ${currentElem === 0 ? "active" : ""}`}
+                >
+                  <a href="#home">Главная</a>
+                </li>
+                <li
+                  onClick={handleSelectItem}
+                  className={`menu_item ${currentElem === 1 ? "active" : ""}`}
+                >
+                  <a href="#about">О нас</a>
+                </li>
+                <li
+                  onClick={handleSelectItem}
+                  className={`menu_item ${currentElem === 2 ? "active" : ""}`}
+                >
+                  <a href="#review">Отзывы</a>
+                </li>
+                <li
+                  onClick={handleSelectItem}
+                  className={`menu_item ${currentElem === 3 ? "active" : ""}`}
+                >
+                  <a href="#order">Заказать</a>
+                </li>
+                <li
+                  onClick={handleSelectItem}
+                  className={`menu_item ${currentElem === 4 ? "active" : ""}`}
+                >
+                  <a href="#footer">Контакты</a>
+                </li>
+              </ul>
+              <p className="nav_tel">
+                <a className="nav_tel__link" href="tel:+79111169173">
+                  +7 911 925-28-31
+                </a>
+              </p>
+            </div>
           </nav>
         </div>
         <div className="header_body">
           <div className="content">
-            <p className="from">Цена от 4500₽</p>
+            <p className="from">Цена от 4000₽</p>
             <h1 className="title">
-              Биотуалеты в аренду: Выбор <br /> для мгновенного комфорта. <br />{" "}
-              Просто и выгодно!
+              Биотуалеты в аренду: <br /> Просто и выгодно!
             </h1>
             <p className="sub_title">
-              Быстрая доставка биотуалетов: Комфорт без границ в
-              Санкт-Петербурге и <br /> области. Удовлетворим ваши 
-              потребности, где бы вы ни находились!
+              Быстрая доставка: Санкт-Петербург и Ленинградская область области.
             </p>
             <div className="calculator_container">
               {!shortData && (
@@ -560,7 +609,12 @@ function App() {
                   <div className="result">
                     <div
                       className="result_back--btn"
-                      onClick={(e) => setShortData(null)}
+                      onClick={(e) => {
+                        setShortData(null);
+                        setSelectedAddress(null);
+                        setAddress('');
+                        setValue(1)
+                      }}
                     >
                       Назад
                     </div>
@@ -630,8 +684,8 @@ function App() {
             <li className="section_list_feature__item">
               <img src={MapIcon} alt="icon_feature" />
               <p>
-                <span>Зона покрытия</span> Доставляем по всей <br /> области и
-                Питеру{" "}
+                <span>Зона покрытия</span> Ленинградская область и
+                Санкт-Питербург
               </p>
             </li>
           </ul>
@@ -654,7 +708,8 @@ function App() {
                     <h2 className="review_name">Владимир</h2>
                   </div>
                   <p className="review_text">
-                    Ребята молодцы, в день звонка привезли. Вроде просто туалет, а приятная оперативность.
+                    Ребята молодцы, в день звонка привезли. Вроде просто туалет,
+                    а приятная оперативность.
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">18</p>
@@ -672,7 +727,8 @@ function App() {
                     <h2 className="review_name">Максим</h2>
                   </div>
                   <p className="review_text">
-                    Все привезли четко в срок, помогли с установкой. Ребята молодцы. Рекомендую!
+                    Все привезли четко в срок, помогли с установкой. Ребята
+                    молодцы. Рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">6</p>
@@ -694,7 +750,8 @@ function App() {
                     <h2 className="review_name">Оксана</h2>
                   </div>
                   <p className="review_text">
-                    Всем рекомендую! Туалет привезли в день обращения, самые низкие цены! Каждый месяц приезжают, чистят
+                    Всем рекомендую! Туалет привезли в день обращения, самые
+                    низкие цены! Каждый месяц приезжают, чистят
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">32</p>
@@ -712,7 +769,8 @@ function App() {
                     <h2 className="review_name">Иван</h2>
                   </div>
                   <p className="review_text">
-                    У ребят взяли биотуалет на дачу. Цена адекватная, оперативно привезли и сами установили. Спасибо, рекомендую!
+                    У ребят взяли биотуалет на дачу. Цена адекватная, оперативно
+                    привезли и сами установили. Спасибо, рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">25</p>
@@ -734,7 +792,9 @@ function App() {
                     <h2 className="review_name">Михаил</h2>
                   </div>
                   <p className="review_text">
-                    Все супер, через три часа после звонка, туалет уже был на участке. Причем в воскресенье. Цены ниже чем у конкурентов. Всем рекомендую!
+                    Все супер, через три часа после звонка, туалет уже был на
+                    участке. Причем в воскресенье. Цены ниже чем у конкурентов.
+                    Всем рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">31</p>
@@ -752,7 +812,10 @@ function App() {
                     <h2 className="review_name">Ринат</h2>
                   </div>
                   <p className="review_text">
-                    Заказал кабинку на дачу в Санино 2 месяца назад. Цена не самая низкая, но тех кто может привезти в воскресенье нашел только их. Привезли быстро, Обслуживают по звонку в течении пары дней, к работе претензий нет!
+                    Заказал кабинку на дачу в Санино 2 месяца назад. Цена не
+                    самая низкая, но тех кто может привезти в воскресенье нашел
+                    только их. Привезли быстро, Обслуживают по звонку в течении
+                    пары дней, к работе претензий нет!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">4</p>
@@ -774,7 +837,8 @@ function App() {
                     <h2 className="review_name">Юрий</h2>
                   </div>
                   <p className="review_text">
-                    Хорошая компания. Привезли, обслуживали в назначенные сроки. Работой доволен, рекомендую!
+                    Хорошая компания. Привезли, обслуживали в назначенные сроки.
+                    Работой доволен, рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">27</p>
@@ -792,7 +856,9 @@ function App() {
                     <h2 className="review_name">Алексей</h2>
                   </div>
                   <p className="review_text">
-                    Туалет привезли очень быстро, через 2 часа. Стоимость услуг реально дешевле, чем у конкурентов. Все честно, вежливо и оперативно. Лучшие, рекомендую!
+                    Туалет привезли очень быстро, через 2 часа. Стоимость услуг
+                    реально дешевле, чем у конкурентов. Все честно, вежливо и
+                    оперативно. Лучшие, рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">53</p>
@@ -814,11 +880,12 @@ function App() {
                     <h2 className="review_name">Алина</h2>
                   </div>
                   <p className="review_text">
-                    Ребята, спасибо за оперативность! Все чисто, во время, персонал вежливый! Будем заказывать у вас еще!
+                    Ребята, спасибо за оперативность! Все чисто, во время,
+                    персонал вежливый! Будем заказывать у вас еще!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">13</p>
-                    <p className="review_date">4.04.2023</p>
+                    <p className="review_date">04.04.2023</p>
                   </div>
                 </li>
                 <li className="review_list__item">
@@ -832,7 +899,9 @@ function App() {
                     <h2 className="review_name">Марина</h2>
                   </div>
                   <p className="review_text">
-                    Отчличная организация! Оперативно оказали услугу! Цены самые приемлемые среди аналогичных предложений! Обслуживали в назначенное время! Всем рекомендую!
+                    Отчличная организация! Оперативно оказали услугу! Цены самые
+                    приемлемые среди аналогичных предложений! Обслуживали в
+                    назначенное время! Всем рекомендую!
                   </p>
                   <div className="reveiw_bottom">
                     <p className="review_like">42</p>
