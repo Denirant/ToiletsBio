@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ToiletsBio/static/css/main.822b769c.css",
-    "main.js": "/ToiletsBio/static/js/main.c2ac0c05.js",
-    "static/media/toiletMain.png": "/ToiletsBio/static/media/toiletMain.9be458672cb07b187390.png",
-    "static/media/avito.png": "/ToiletsBio/static/media/avito.0565a538200c6666ccd4.png",
-    "index.html": "/ToiletsBio/index.html",
-    "main.822b769c.css.map": "/ToiletsBio/static/css/main.822b769c.css.map",
-    "main.c2ac0c05.js.map": "/ToiletsBio/static/js/main.c2ac0c05.js.map"
+    "main.css": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/css/main.aec835d8.css",
+    "main.js": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/js/main.741adb8e.js",
+    "static/media/toiletMain.png": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/media/toiletMain.9be458672cb07b187390.png",
+    "static/media/avito.png": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/media/avito.0565a538200c6666ccd4.png",
+    "index.html": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/index.html",
+    "main.aec835d8.css.map": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/css/main.aec835d8.css.map",
+    "main.741adb8e.js.map": "/%D0%91%D0%B8%D0%BE%D0%A1%D0%BF%D0%B1.%D1%80%D1%84/static/js/main.741adb8e.js.map"
   },
   "entrypoints": [
-    "static/css/main.822b769c.css",
-    "static/js/main.c2ac0c05.js"
+    "static/css/main.aec835d8.css",
+    "static/js/main.741adb8e.js"
   ]
 }
